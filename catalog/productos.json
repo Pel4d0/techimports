@@ -1,0 +1,44 @@
+[
+  {
+    "categoria": "auriculares",
+    "nombre": "XIAOMI MI BASIC",
+    "imagen": "https://cellshop.com/media/catalog/product/1/2/1211863_1_514d_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=616&width=616&canvas=616:616",
+    "codigo": 100
+  },
+  {
+    "categoria": "cascos",
+    "nombre": "SATELLITE AE-265",
+    "imagen": "https://cellshop.com/media/catalog/product/1/0/1069655_1_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=616&width=616&canvas=616:616",
+    "codigo": 300
+  },
+  {
+    "categoria": "cascos",
+    "nombre": "SATELLITE AE-362UR",
+    "imagen": "https://cellshop.com/media/catalog/product/2/4/2456423_1_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=616&width=616&canvas=616:616",
+    "codigo": 301
+  },
+  {
+    "categoria": "cascos",
+    "nombre": "SATELLITE AE-327R",
+    "imagen": "https://cellshop.com/media/catalog/product/1/1/1163056_1_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=616&width=616&canvas=616:616",
+    "codigo": 302
+  },
+  {
+    "categoria": "cascos",
+    "nombre": "SATELLITE AE-327A",
+    "imagen": "https://cellshop.com/media/catalog/product/1/0/1069723_1_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=616&width=616&canvas=616:616",
+    "codigo": 303
+  },
+  {
+    "categoria": "parlantes",
+    "nombre": "JBL GO 4",
+    "imagen": "https://cellshop.com/media/catalog/product/4/3/4345947_1_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=616&width=616&canvas=616:616",
+    "codigo": 200
+  },
+  {
+    "categoria": "parlantes",
+    "nombre": "JBL GO 4 AZUL",
+    "imagen": "https://cellshop.com/media/catalog/product/4/2/4226420_1_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=616&width=616&canvas=616:616",
+    "codigo": 201
+  }
+]

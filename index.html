@@ -20,6 +20,7 @@
             min-height: 100vh;
         }
 
+        /* Menú lateral */
         #menu {
             width: 250px;
             background-color: #2c3e50;
@@ -63,43 +64,82 @@
             transform: translateX(5px);
         }
 
-        #redes-sociales {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        #redes-sociales a {
-            text-decoration: none;
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        #redes-sociales a:hover {
-            transform: scale(1.1);
-        }
-
-        #instagram {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
-        }
-
-        #whatsapp {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
-        }
-
+        /* Contenido principal */
         #contenido {
             flex-grow: 1;
             padding: 30px;
             background-color: #fff;
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: margin-left 0.3s ease; /* Transición para el margen */
         }
 
+        /* Botón de hamburguesa */
+        #menu-toggle {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: transparent; /* Fondo transparente */
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+        }
+
+        /* Ícono de hamburguesa personalizado */
+        #menu-toggle .hamburger {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #25688a; /* Colosr del ícono */
+            position: relative;
+        }
+
+        #menu-toggle .hamburger::before,
+        #menu-toggle .hamburger::after {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background-color: #25688a; /* Color del ícono */
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        #menu-toggle .hamburger::before {
+            top: -6px;
+        }
+
+        #menu-toggle .hamburger::after {
+            top: 6px;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            #menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                transform: translateX(-100%);
+                z-index: 1000;
+            }
+
+            #menu.mostrar {
+                transform: translateX(0);
+            }
+
+            #menu-toggle {
+                display: block; /* Mostrar el botón en móviles */
+            }
+
+            /* Añadir margen superior al contenido cuando el menú está visible */
+            #contenido.menu-visible {
+                margin-top: 0px; /* Ajusta este valor según sea necesario */
+            }
+        }
+
+        /* Estilos para las categorías y productos */
         .categoria {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -208,58 +248,14 @@
                 opacity: 1;
             }
         }
-
-        /* Estilos para dispositivos móviles */
-        @media (max-width: 768px) {
-            #menu {
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100%;
-                transform: translateX(-100%);
-                z-index: 1000;
-            }
-
-            #menu.mostrar {
-                transform: translateX(0);
-            }
-
-            #menu-toggle {
-                display: block;
-                position: fixed;
-                top: 20px;
-                left: 20px;
-                background-color: #2c3e50;
-                color: #ecf0f1;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-                z-index: 1001;
-                padding: 10px;
-                border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-
-            #contenido {
-                padding: 20px;
-                margin-left: 0;
-            }
-
-            .producto {
-                width: 100%;
-            }
-        }
-
-        /* Botón de hamburguesa */
-        #menu-toggle {
-            display: none; /* Oculto por defecto */
-        }
     </style>
 </head>
 <body>
 
     <!-- Botón de hamburguesa para móviles -->
-    <button id="menu-toggle">☰</button>
+    <button id="menu-toggle">
+        <span class="hamburger"></span>
+    </button>
 
     <div class="contenedor">
         <!-- Menú lateral -->
@@ -362,6 +358,14 @@
                 categorias[i].classList.remove('activa');
             }
             document.getElementById(categoriaId).classList.add('activa');
+
+            // Cerrar el menú en dispositivos móviles
+            if (window.innerWidth <= 768) {
+                const menu = document.getElementById('menu');
+                const contenido = document.getElementById('contenido');
+                menu.classList.remove('mostrar');
+                contenido.classList.remove('menu-visible');
+            }
         }
 
         // Función para mostrar la imagen ampliada
@@ -379,9 +383,13 @@
         }
 
         // Función para mostrar/ocultar el menú en móviles
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            const menu = document.getElementById('menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const contenido = document.getElementById('contenido');
+
+        menuToggle.addEventListener('click', () => {
             menu.classList.toggle('mostrar');
+            contenido.classList.toggle('menu-visible');
         });
 
         // Cargar los datos y mostrar los productos al iniciar la página
